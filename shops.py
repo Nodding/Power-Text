@@ -9,7 +9,7 @@ def readx(x):
 		sys.stdout.flush()  #Moves right to next
 	print "" #newline it looks nicer
 
-#defines the actual store
+#defines the actual stores
 def happyStore(money, happystickhave, swordhave):
 	print "WELCOME TO THE HAPPY STORE :D\n"
 	#anything in readx is printed like a type writer
@@ -21,21 +21,21 @@ def happyStore(money, happystickhave, swordhave):
 	sleep(1)
 	readx("What would you like? c:")
 	choice = raw_input("")
-	if choice == "happystick" and happystickhave == False and money >= 50:
+	if choice.lower() == "happystick" and happystickhave == False and money >= 50:
 		print "You have recieved the happy stick!"
 		happystickhave = True
 		money = money - 50
-	elif choice == "happystick" and happystickhave == False and money < 50:
+	elif choice.lower() == "happystick" and happystickhave == False and money < 50:
 		print "You do not have enough :D"
-	elif choice == "happystick" and happystickhave == True:
+	elif choice.lower() == "happystick" and happystickhave == True:
 		print "You already bought that! Make sure you [equip] it!"
-	elif choice == "sword" and swordhave == False and money >= 300:
+	elif choice.lower() == "sword" and swordhave == False and money >= 300:
 		print "You have bought the sword!"
 		swordhave = True
 		money = money - 300
-	elif choice == "sword" and swordhave == False and money < 300:
+	elif choice.lower() == "sword" and swordhave == False and money < 300:
 		print "You do not have enough! :D"
-	elif choice == "sword" and swordhave == True:
+	elif choice.lower() == "sword" and swordhave == True:
 		print "You already have the sword! Go [equip] it if you haven't!"
 	else:
 		print "I didn't understand that :C"
