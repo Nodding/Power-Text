@@ -15,6 +15,9 @@ It was written by Lucca Cioffi at Topsy Studios.
 | ------ | ------ |
 | walk | This is how characters can move to and from locations. There is 1/5th of a chance to encounter an enemy along the way. |
 | map | Shows a map of the current area. |
+| help | Shows the list of commands ingame. |
+| stats | Will list out the current state of your character. |
+| upgrade | Pray to the upgrade god. You can then choose [HP] , [STR] or [GOLD] to spend EXP on. |
 | shop | Some areas have a shop you can access. They will sell items. |
 | NOT IN THIS BUILD AS OF NOW: travel | This is how you change where you are walking. If you already visited a location, you can pay to quick travel there. |
 | potion | Uses a potion from your inventory.|
