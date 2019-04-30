@@ -40,6 +40,13 @@ specialuses = 10
 potions = 5
 #----These set the players location
 currentplace = "Shiverton Village"
+#----places they have discovered
+k0 = False
+k1 = False
+k2 = False
+k3 = False
+k4 = False
+k5 = False
 #----This is a d6 roll, for random battles usually
 roll = random.randrange(1, 7)
 #def weapon types im thinking melees and guns - guns do more damage but need to have ammo and be reloaded every few turns
@@ -167,6 +174,7 @@ gamestart = True
 print "You are the chosen hero of Teltactica!"
 print "Travel the world, to ultimately destroy the evil wizard of Terror Castle."
 while (gamestart):
+	currentplace, k0, k1, k2, k3, k4, k5 = locations.placesdiscover(currentplace, k0, k1, k2, k3, k4, k5)
 	action = raw_input("Action> ")
 	if days == 0:
 		print "You have arrived at %s." % (goal)
@@ -217,10 +225,9 @@ while (gamestart):
 			days = 10
 		elif goal == "Shiverton Village":
 			days = 10
-		
+
 		print "It will take %s days to get to your goal." % (days)
 	elif action == "upgrade":
 		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, MaxHP, STR, money, ufirst)
 	else:
 		print "Not a command."
-	

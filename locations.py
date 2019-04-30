@@ -64,10 +64,11 @@ def printmap(curpla):
 
 def placesdiscover(curpla, k0, k1, k2, k3, k4, k5):
 	if curpla == "Shiverton Village" and k1 == False:
-		printx("You awake in Shiverton Village. Its cold climate sends shivers down your spine, but you shake it off, knowing you must push through here to get to the castle.")
+		readx("You awake in Shiverton Village. Its cold climate sends shivers down your spine, but you shake it off, knowing you must push through here to get to the castle.")
 		k1 = True
-	else: 
-		print "YOU SHOULD NOT SEE THIS. TELL NODDING ON GITHUB TO FIX IT! ERROR 01"
+	if curpla == "Magma Lane" and k2 == False:
+		readx("You arrive in Magma Lane. The blistering heat almost overwhelms you. You power through on your mission to the castle.")
+		k2 = True	
 	return curpla, k0, k1, k2, k3, k4, k5
 def printLocations(curpla):
 		print al1, al2, al3, al4, al5
@@ -79,7 +80,7 @@ def traveltime(curpla):
 	al3 = ""
 	al4 = ""
 	al5 = ""
-	
+
 	print "Where would you like to go?"
 	if curpla == "Shiverton Village":
 		al1 = "Magma Lane"
@@ -106,4 +107,3 @@ def traveltime(curpla):
 		return wanttogo
 	else:
 		print "That is not in range. Check your map!"
-	
