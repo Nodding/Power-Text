@@ -190,7 +190,7 @@ while (gamestart):
 		print "You walk towards your current goal, %s" % (goal)
 		days = days - 1
 		roll = 1
-		#roll = random.randrange(1, 3)
+		roll = random.randrange(1, 3)
 		if roll == 2:
 			print "A figure appears before you!"
 			print "FIGHT!"
