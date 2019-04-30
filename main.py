@@ -6,6 +6,7 @@ import asciiart
 import mediumbattle
 import shops
 import upgrade
+import locations
 
 #----This is the default player values
 #player health is dealt in HP or hitpoints
@@ -22,7 +23,7 @@ EXP = 0
 ufirst = True
 #player money, to buy potions and new weapons
 money = 10
-goal = "Evil Castle in the distance"
+goal = "Magma Valley"
 days = 20
 #----This is a variable that tells the game if the player is in a fight or not.
 fight = False
@@ -39,10 +40,6 @@ specialuses = 10
 potions = 5
 #----These set the players location
 currentplace = "Shiverton Village"
-#other locations
-#Magema Lane
-#Viscus Valley
-#Allerteration Admin Alley
 #----This is a d6 roll, for random battles usually
 roll = random.randrange(1, 7)
 #def weapon types im thinking melees and guns - guns do more damage but need to have ammo and be reloaded every few turns
@@ -107,8 +104,9 @@ def equip(weapon, happystickhave, swordhave, goldpanhave):
 
 def givehelp():
 	print "--Help--"
-	print "You can use [potion] to restore some HP"
-	print "You can use [walk] to walk for a day over to %s" % (goal)
+	print "You can use [map] to show the surrounding area."
+	print "You can use [potion] to restore some HP."
+	print "You can use [walk] to walk for a day over to %s." % (goal)
 	print "You can use [equip] to equip weapons found or bought"
 	print "You can use [goods] to eat food and look at your inventory"
 	print "You can use [stats] for you stats."
@@ -118,18 +116,22 @@ def givehelp():
 	if questions == "yes":
 		print "About what?"
 		questions1 = raw_input("I have a question about> ")
-		if questions1 == "potion":
+		if questions1.lowercase() == "potion":
 			print "Potion - using one of your potions, restores all your health. You can buy more potions at most shops."
-		elif questions1 == "shop":
-			print "Shopping - Different on any road or town. To buy, type what you want, all lowercase. To leave, buy 1 thing or say 'goodbye.'"
-		elif questions1 == "walk":
+		elif questions1.lowercase() == "shop":
+			print "Shopping - Different in any town. To buy, type what you want, all lowercase. To leave, buy 1 thing or say 'goodbye.'"
+		elif questions1.lowercase() == "walk":
 			print "Walking - Walk towards the next objective. You may encounter an enemy on the road, so be careful!"
-		elif questions1 == "equip":
-			print "Equiping - equips the best weapon you have. There are 3. You must have every weapon before the others in order to equip the next best. For example, you must have the happystick before you can get the sword. And you must have both of those before you can get the secret weapon!"
-		elif questions1 == "goods":
+		elif questions1.lowercase() == "equip":
+			print "Equiping - Equips the best weapon you have. There are 3. You must have every weapon before the others in order to equip the next best. For example, you must have the happystick before you can get the sword. And you must have both of those before you can get the secret weapon!"
+		elif questions1.lowercase() == "goods":
 			print "Goods - You can view and use items here. It tells you everything you have in your backpack. You always start with 1 banana and 100 dollars."
-		elif questions1 == "stats":
-			print "Stats - very simple, they just show your current health out of your maxium health, and how much damage or DP you do."
+		elif questions1.lowercase() == "stats":
+			print "Stats - Very simple, they just show your current health out of your maxium health, and how much damage or DP you do."
+		elif questions1.lowercase() == "map":
+			print "Map - See the current place you are in, and where you can travel from here."
+		elif questions1.lowercase() == "travel":
+			print "Travel - Allows you to travel to the available areas. You can see what is avaible by checking the map."
 		else:
 			print "Can't help you with that, did you mispell it?"
 	elif questions == "no":
@@ -161,8 +163,8 @@ def showStats(bonusDP):
 	print "Total gold coins: %s" % (money)
 
 gamestart = True
-print "You are the chosen hero of Example Land!"
-print "People need you man go save them or something"
+print "You are the chosen hero of Teltactica!"
+print "Travel the world, to ultimately destroy the evil wizard of Terror Castle."
 while (gamestart and days != 0):
 	action = raw_input("Action> ")
 	if action == "equip":
@@ -195,15 +197,24 @@ while (gamestart and days != 0):
 			print "You grab a red vile out of your pocket."
 			print "Uncorking the top, you take a swig from a potion"
 			HP = MaxHP
-
+			potions = potions - 1
 			print "You have %sHP!" % (HP)
 		else:
 			print "You reach for the potion section in your bag to find none are there :c."
 			print "Go buy some from a local [shop]!"
+	elif action == "map":
+		print "You pull out and assess you map."
+		locations.printmap(currentplace)
+	elif action == "travel":
+		print "Would you [walk] there, or [pay] 100 gold to get there now?"
+		travelanswer = raw_input("I would like to...> ")
+		if travelanswer == "walk":
+			locations.travelfoot()
+
 	elif action == "upgrade":
 		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, MaxHP, STR, money, ufirst)
 	else:
 		print "Not an action I thought youd say!"
-print "You have walked all the way to example castle! Now you face off FINAL BOSS!"
-fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions,EXP = easybattle(fight, 100, 5, enemysprite, enemyattacksprite, " final boss", 300, HP,MaxHP, DP,bonusDP, specialuses, money, potions, EXP)
+print "You have adventured all the way to Terror Castle! Now you face off THE DESERT WIZARD WARDOOM!"
+#insert the final boss here
 print "You defeated the FINAL BOSS!!!! Congradulations! If you'/d now like, you should write your own story by forking this code! If you do, I'/d love to see what you create."
