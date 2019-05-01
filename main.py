@@ -10,7 +10,7 @@ import locations
 
 #----This is the default player values
 #player health is dealt in HP or hitpoints
-MaxHP = 35
+maxHP = 35
 HP = 35
 #player damage points
 DP = 10
@@ -23,7 +23,7 @@ EXP = 0
 ufirst = True
 #player money, to buy potions and new weapons
 money = 10
-goal = "[No goal, use [travel] to set it!]"
+goal = "[You have no goal, use [travel] to set it!]"
 days = 10
 #----This is a variable that tells the game if the player is in a fight or not.
 fight = False
@@ -162,7 +162,7 @@ def showStats(bonusDP):
 	print "--STATS--"
 	print "Your total EXP points: %s" % (EXP)
 	print "HP as of now: %s" % (HP)
-	print "Max HP: %s" % (MaxHP)
+	print "Max HP: %s" % (maxHP)
 	print "DP w/o weapon bonus: %s" % (DP)
 	bonusDP = dpBonus(bonusDP)
 	print "DP w/ weapon bonus: %s" % (DP + bonusDP)
@@ -195,7 +195,7 @@ while (gamestart):
 			print "A figure appears before you!"
 			print "FIGHT!"
 			bonusDP = dpBonus(bonusDP)
-			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 15, 5, enemysprite, enemyattacksprite, "n imp", 10, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
+			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 15, 5, enemysprite, enemyattacksprite, "n imp", 10, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
 			print "You now have %sEXP, and now have %s gold!" % (EXP, money)
 	elif action == "shop":
 		print "A sign at a local shop catches your eye, and you enter."
@@ -209,7 +209,7 @@ while (gamestart):
 		if (potions > 0):
 			print "You grab a red vile out of your pocket."
 			print "Uncorking the top, you take a swig from a potion"
-			HP = MaxHP
+			HP = maxHP
 			potions = potions - 1
 			print "You have %sHP!" % (HP)
 		else:
@@ -228,6 +228,6 @@ while (gamestart):
 
 		print "It will take %s days to get to your goal." % (days)
 	elif action == "upgrade":
-		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, MaxHP, STR, money, ufirst)
+		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, maxHP, STR, money, ufirst)
 	else:
 		print "Not a command."
