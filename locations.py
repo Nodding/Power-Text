@@ -46,6 +46,12 @@ def availablelocations(curpla, al1, al2, al3, al4, al5):
 		al3 = "Greentree Grove"
 		al4 = "Allerteration Admin Alley"
 		al5 = "Allerteration Admin Alley"
+	elif curpla == "Greentree Groove":
+		al1 = "Magma Lane"
+		al2 = "Vile Valley"
+		al3 = "Greentree Grove"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
 	else:
 		al1 = "Allerteration Admin Alley"
 		al2 = "Allerteration Admin Alley"
