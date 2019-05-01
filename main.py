@@ -10,7 +10,7 @@ import locations
 
 #----This is the default player values
 #player health is dealt in HP or hitpoints
-MaxHP = 35
+maxHP = 35
 HP = 35
 #player damage points
 DP = 10
@@ -23,8 +23,8 @@ EXP = 0
 ufirst = True
 #player money, to buy potions and new weapons
 money = 10
-goal = "Magma Valley"
-days = 20
+goal = "[You have no goal, use [travel] to set it!]"
+days = 10
 #----This is a variable that tells the game if the player is in a fight or not.
 fight = False
 #----This is default enemy HP, DP and name.
@@ -40,6 +40,13 @@ specialuses = 10
 potions = 5
 #----These set the players location
 currentplace = "Shiverton Village"
+#----places they have discovered
+k0 = False
+k1 = False
+k2 = False
+k3 = False
+k4 = False
+k5 = False
 #----This is a d6 roll, for random battles usually
 roll = random.randrange(1, 7)
 #def weapon types im thinking melees and guns - guns do more damage but need to have ammo and be reloaded every few turns
@@ -155,18 +162,23 @@ def showStats(bonusDP):
 	print "--STATS--"
 	print "Your total EXP points: %s" % (EXP)
 	print "HP as of now: %s" % (HP)
-	print "Max HP: %s" % (MaxHP)
+	print "Max HP: %s" % (maxHP)
 	print "DP w/o weapon bonus: %s" % (DP)
 	bonusDP = dpBonus(bonusDP)
 	print "DP w/ weapon bonus: %s" % (DP + bonusDP)
 	print "STR points: %s" % (STR)
 	print "Total gold coins: %s" % (money)
+	print "You have access to the places in %s, and are currently traveling to %s" % (currentplace, goal)
 
 gamestart = True
 print "You are the chosen hero of Teltactica!"
 print "Travel the world, to ultimately destroy the evil wizard of Terror Castle."
-while (gamestart and days != 0):
+while (gamestart):
+	currentplace, k0, k1, k2, k3, k4, k5 = locations.placesdiscover(currentplace, k0, k1, k2, k3, k4, k5)
 	action = raw_input("Action> ")
+	if days == 0:
+		print "You have arrived at %s." % (goal)
+		currentplace = goal
 	if action == "equip":
 		weapon, happystickhave, swordhave, goldpanhave = equip(
 		    weapon, happystickhave, swordhave, goldpanhave)
@@ -175,14 +187,15 @@ while (gamestart and days != 0):
 	elif action == "stats":
 		showStats(bonusDP)
 	elif action == "walk":
-		print "you walk to example castle"
+		print "You walk towards your current goal, %s" % (goal)
 		days = days - 1
+		roll = 1
 		roll = random.randrange(1, 3)
 		if roll == 2:
 			print "A figure appears before you!"
 			print "FIGHT!"
 			bonusDP = dpBonus(bonusDP)
-			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 15, 5, enemysprite, enemyattacksprite, "n imp", 10, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
+			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 15, 5, enemysprite, enemyattacksprite, "n imp", 10, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
 			print "You now have %sEXP, and now have %s gold!" % (EXP, money)
 	elif action == "shop":
 		print "A sign at a local shop catches your eye, and you enter."
@@ -196,7 +209,7 @@ while (gamestart and days != 0):
 		if (potions > 0):
 			print "You grab a red vile out of your pocket."
 			print "Uncorking the top, you take a swig from a potion"
-			HP = MaxHP
+			HP = maxHP
 			potions = potions - 1
 			print "You have %sHP!" % (HP)
 		else:
@@ -206,15 +219,15 @@ while (gamestart and days != 0):
 		print "You pull out and assess you map."
 		locations.printmap(currentplace)
 	elif action == "travel":
-		print "Would you [walk] there, or [pay] 100 gold to get there now?"
-		travelanswer = raw_input("I would like to...> ")
-		if travelanswer == "walk":
-			locations.travelfoot()
+		goal = locations.traveltime(currentplace)
+		print "Your goal is now %s!" % (goal)
+		if goal == "Magma Lane":
+			days = 10
+		elif goal == "Shiverton Village":
+			days = 10
 
+		print "It will take %s days to get to your goal." % (days)
 	elif action == "upgrade":
-		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, MaxHP, STR, money, ufirst)
+		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, maxHP, STR, money, ufirst)
 	else:
-		print "Not an action I thought youd say!"
-print "You have adventured all the way to Terror Castle! Now you face off THE DESERT WIZARD WARDOOM!"
-#insert the final boss here
-print "You defeated the FINAL BOSS!!!! Congradulations! If you'/d now like, you should write your own story by forking this code! If you do, I'/d love to see what you create."
+		print "Not a command."

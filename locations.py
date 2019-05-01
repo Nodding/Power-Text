@@ -10,59 +10,100 @@ def readx(x):
 		sys.stdout.flush()  #Moves right to next
 	print "" #newline it looks nicer
 
-#inital available locations
-availablelocation1 = "Allerteration Admin Alley"
-availablelocation2 = "Allerteration Admin Alley"
-availablelocation3 = "Allerteration Admin Alley"
-availablelocation4 = "Allerteration Admin Alley"
-availablelocation5 = "Allerteration Admin Alley"
+#the variables were getting very long. So AL# means availablelocation number whatever. k# means knowing that number of location.
 
 #All locations
 location0 = "Allerteration Admin Alley"
+k0 = False
 location1 = "Shiverton Village"
+k1 = False
 location2 = "Magma Lane"
+k2 = False
 location3 = "Vile Valley"
+k3 = False
 location4 = "Greentree Grove"
+k4 = False
 location5 = "Terror Castle"
-def availablelocations(availablelocation1, availablelocation2, availablelocation3, availablelocation4, availablelocation5):
-	if currentplace == "Shiverton Village":
-		availablelocation1 = "Magma Lane"
-		availablelocation2 = "Allerteration Admin Alley"
-		availablelocation3 = "Allerteration Admin Alley"
-	elif currentplace == "Magma Lane":
-		availablelocation1 = "Shiverton Village"
-		availablelocation2 = "Vile Valley"
-		availablelocation3 = "Greentree Grove"
-		availablelocation4 = "Allerteration Admin Alley"
-	else:
-		availablelocation1 = "Allerteration Admin Alley"
-		availablelocation2 = "Allerteration Admin Alley"
-		availablelocation3 = "Allerteration Admin Alley"
-		availablelocation4 = "Allerteration Admin Alley"
-		availablelocation5 = "Allerteration Admin Alley"
-	return availablelocation1, availablelocation2, availablelocation3, availablelocation4, availablelocation5
-def checktravel(place):
-	print "Ah yes, you want to go to %s..." % (place)
-	if (place != availablelocation1 or place != availablelocation2 or place != availablelocation3 or place != availablelocation4 or place != availablelocation5):
-		print "That isn't in my reach to walk! I should check my [map]"
+k5 = False
 
-def printmap(currentplace):
-	if currentplace == "Shiverton Village":
+#initating variables
+al1 = ""
+al2 = ""
+al3 = ""
+al4 = ""
+al5 = ""
+
+def availablelocations(curpla, al1, al2, al3, al4, al5):
+	if curpla == "Shiverton Village":
+		al1 = "Magma Lane"
+		al2 = "Allerteration Admin Alley"
+		al3 = "Allerteration Admin Alley"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	elif curpla == "Magma Lane":
+		al1 = "Shiverton Village"
+		al2 = "Vile Valley"
+		al3 = "Greentree Grove"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	else:
+		al1 = "Allerteration Admin Alley"
+		al2 = "Allerteration Admin Alley"
+		al3 = "Allerteration Admin Alley"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	return curpla, al1, al2, al3, al4, al5
+
+def printmap(curpla):
+	if curpla == "Shiverton Village":
 		print asciiart.map1
-	elif currentplace == "Magma Lane":
+	elif curpla == "Magma Lane":
 		print asciiart.map2
 	else:
 		print asciiart.mapCommands
-def travelhorse():
-	print "A man in a horse and buggy pulls up beside you, and asks where you would like to go."
-	sleep(0.5)
-	print "You tell the man..."
-	traveldesination = raw_input("Desintation> ")
-def travelfoot():
-	print "Where will you head now?"
-	heading = raw_input()
-	if heading.upper() == "SHIVERTON VILLAGE":
-		print "You set a goal to walk to Shiverton Village by foot."
-def placesdiscover():
-	print "You have discovered %s!" % (area)
-	print ""
+
+def placesdiscover(curpla, k0, k1, k2, k3, k4, k5):
+	if curpla == "Shiverton Village" and k1 == False:
+		readx("You awake in Shiverton Village. Its cold climate sends shivers down your spine, but you shake it off, knowing you must push through here to get to the castle.")
+		k1 = True
+	if curpla == "Magma Lane" and k2 == False:
+		readx("You arrive in Magma Lane. The blistering heat almost overwhelms you. You power through on your mission to the castle.")
+		k2 = True	
+	return curpla, k0, k1, k2, k3, k4, k5
+def printLocations(curpla):
+		print al1, al2, al3, al4, al5
+		print curpla
+def traveltime(curpla):
+	#initating variables
+	al1 = ""
+	al2 = ""
+	al3 = ""
+	al4 = ""
+	al5 = ""
+
+	print "Where would you like to go?"
+	if curpla == "Shiverton Village":
+		al1 = "Magma Lane"
+		al2 = "Allerteration Admin Alley"
+		al3 = "Allerteration Admin Alley"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	elif curpla == "Magma Lane":
+		al1 = "Shiverton Village"
+		al2 = "Vile Valley"
+		al3 = "Greentree Grove"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	else:
+		al1 = "Allerteration Admin Alley"
+		al2 = "Allerteration Admin Alley"
+		al3 = "Allerteration Admin Alley"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	#printLocations(curpla)
+	wanttogo = raw_input("Travel to> ")
+	if wanttogo == al1 or wanttogo == al2 or wanttogo == al3 or wanttogo == al4 or wanttogo == al5:
+		print "You turn towards your new goal."
+		return wanttogo
+	else:
+		print "That is not in range. Check your map!"

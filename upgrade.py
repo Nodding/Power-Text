@@ -33,7 +33,7 @@ def upgradeGod(EXP, HP, maxHP, STR, money, ufirst):
 			maxHP = maxHP + 5
 			HP = maxHP
 			EXP = EXP - 100
-			print "You now have a maxium of %sHP!" % (HP)
+			print "You now have a maxium of %sHP!" % (maxHP)
 			readx("UG: Hooray!")
 		else:
 			print "UG: You don't have enough EXP!"
