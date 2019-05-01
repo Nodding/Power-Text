@@ -4,12 +4,6 @@ import random
 def simplebattle(fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP):
 	# set fight FLAG to (true)
 	fight = True
-	#sets enemy images
-	enemysprite =  asciiart.imp#IMAGE
-	enemyattacksprite = asciiart.impattack #IMAGE
-	#last but not least enemy name and money you get when you win
-	enemyname = " vicious imp "
-	moneyforkill = 25
 	#print the enemy
 	print enemysprite
 	#prints the intro to fight
