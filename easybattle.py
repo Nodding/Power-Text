@@ -4,12 +4,6 @@ import random
 def simplebattle(fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP):
 	# set fight FLAG to (true)
 	fight = True
-	#sets enemy images
-	enemysprite =  asciiart.imp#IMAGE
-	enemyattacksprite = asciiart.impattack #IMAGE
-	#last but not least enemy name and money you get when you win
-	enemyname = " vicious imp "
-	moneyforkill = 25
 	#print the enemy
 	print enemysprite
 	#prints the intro to fight
@@ -32,13 +26,32 @@ def simplebattle(fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, en
 				print "You have earned %s gold pieces!" % (moneyforkill)
 				print "And %s EXP!" % (earnEXP)
 				EXP = EXP + earnEXP
+			elif enemyHP > 0:# enemy's turn
+				print enemyattacksprite
+				# attacks, does damage to current health, from half to whatever his max is
+				HP = HP - ((random.randrange(enemyattack/2))+enemyattack/2)
+				print "You have %s HP left!" % (HP)
+				# if current health goes down to 0, end battle/game
+				if HP <= 0:
+					print "You lost the battle!\n"
+					fight = False
 			else:
 				print "It has %s HP left!" % (enemyHP)
 				print "You have %s HP left!" % (HP)
 				specialuses = specialuses - 1 # takes special use away
 				print "You have", specialuses, "uses of your special attack left!"
 		elif user == "s" and specialuses <= 0:
-			print "You are out of special attacks for now!"
+			print "You are out of special attacks!"
+			if enemyHP > 0:# enemy's turn
+				print enemyattacksprite
+				print "The enemy attacks in this moment of your stupidity!"
+				# attacks, does damage to current health, from half to whatever his max is
+				HP = HP - ((random.randrange(enemyattack/2))+enemyattack/2)
+				print "You have %s HP left!" % (HP)
+				# if current health goes down to 0, end battle/game
+				if HP <= 0:
+					print "You lost the battle!\n"
+					fight = False
 		elif user == "a":
 			enemyHP = enemyHP - (DP+bonusDP)
 			print asciiart.personattack
@@ -50,6 +63,15 @@ def simplebattle(fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, en
 				print "You have earned %s gold pieces!" % (moneyforkill)
 				print "And %s EXP!" % (earnEXP)
 				EXP = EXP + earnEXP
+			elif enemyHP > 0:# enemy's turn
+				print enemyattacksprite
+				# attacks, does damage to current health, from half to whatever his max is
+				HP = HP - ((random.randrange(enemyattack/2))+enemyattack/2)
+				print "You have %s HP left!" % (HP)
+				# if current health goes down to 0, end battle/game
+				if HP <= 0:
+					print "You lost the battle!\n"
+					fight = False
 	 		else:
 				print "It has %s HP left!" % (enemyHP)#print info
 				print "You have %s HP left!" % (HP)

@@ -68,7 +68,7 @@ def placesdiscover(curpla, k0, k1, k2, k3, k4, k5):
 		k1 = True
 	if curpla == "Magma Lane" and k2 == False:
 		readx("You arrive in Magma Lane. The blistering heat almost overwhelms you. You power through on your mission to the castle.")
-		k2 = True	
+		k2 = True
 	return curpla, k0, k1, k2, k3, k4, k5
 def printLocations(curpla):
 		print al1, al2, al3, al4, al5
@@ -106,4 +106,4 @@ def traveltime(curpla):
 		print "You turn towards your new goal."
 		return wanttogo
 	else:
-		print "That is not in range. Check your map!"
+		print "That is not in range. Check your [map]!"

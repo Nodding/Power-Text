@@ -195,7 +195,7 @@ while (gamestart):
 			print "A figure appears before you!"
 			print "FIGHT!"
 			bonusDP = dpBonus(bonusDP)
-			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 15, 5, enemysprite, enemyattacksprite, "n imp", 10, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
+			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 25, 5, asciiart.imp, asciiart.impattack, "n imp", 15, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
 			print "You now have %sEXP, and now have %s gold!" % (EXP, money)
 	elif action == "shop":
 		print "A sign at a local shop catches your eye, and you enter."
