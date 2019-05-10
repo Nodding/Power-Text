@@ -111,16 +111,17 @@ def equip(weapon, happystickhave, swordhave, goldpanhave):
 
 def givehelp():
 	print "--Help--"
-	print "You can use [map] to show the surrounding area."
+	print "You can use [map] to show the surrounding area, including places to walk to."
+	print "You can use [travel] to set the place you will walk to."
 	print "You can use [potion] to restore some HP."
 	print "You can use [walk] to walk for a day over to %s." % (goal)
 	print "You can use [equip] to equip weapons found or bought"
 	print "You can use [goods] to eat food and look at your inventory"
 	print "You can use [stats] for you stats."
 	print "--------------"
-	print "Any questions?"
+	print "Any questions? Use [yes] or [no]."
 	questions = raw_input("> ")
-	if questions == "yes":
+	if questions.lower() == "yes":
 		print "About what?"
 		questions1 = raw_input("I have a question about> ")
 		if questions1.lowercase() == "potion":
@@ -138,13 +139,13 @@ def givehelp():
 		elif questions1.lowercase() == "map":
 			print "Map - See the current place you are in, and where you can travel from here."
 		elif questions1.lowercase() == "travel":
-			print "Travel - Allows you to travel to the available areas. You can see what is avaible by checking the map."
+			print "Travel - Allows you to travel to the available areas. You can see what is avaible by checking the [map]."
 		else:
 			print "Can't help you with that, did you mispell it?"
 	elif questions == "no":
 		print "Alright, good luck!"
 	else:
-		print "[yes] or [no] next time!"
+		print "You were supposed to use [yes] or [no]!"
 
 
 def dpBonus(bonusDP):
@@ -169,12 +170,16 @@ def showStats(bonusDP):
 	print "STR points: %s" % (STR)
 	print "Total gold coins: %s" % (money)
 	print "You have access to the places in %s, and are currently traveling to %s" % (currentplace, goal)
-
+helpexplain = True
+helpfight = True
 gamestart = True
 print "You are the chosen hero of Teltactica!"
 print "Travel the world, to ultimately destroy the evil wizard of Terror Castle."
 while (gamestart):
 	currentplace, k0, k1, k2, k3, k4, k5 = locations.placesdiscover(currentplace, k0, k1, k2, k3, k4, k5)
+	if (helpexplain):
+		print "Use the [help] command to learn commands."
+		helpexplain = False
 	action = raw_input("Action> ")
 	if days == 0:
 		print "You have arrived at %s." % (goal)
@@ -194,6 +199,15 @@ while (gamestart):
 		if roll == 2:
 			print "A figure appears before you!"
 			print "FIGHT!"
+			if helpfight:
+				readx("You are about to fight!\n")
+				readx("Use [a] to attack normally.\n\n")
+				readx("Use [s] for a special attack.\n")
+				readx("You can only special attack a certain amount in a battle. Make sure you read the counter!\n\n")
+				readx("Lastly, you can use [p] to use a potion.\n")
+				sleep(4)
+				print "NOW FIGHT!"
+				helpfight = False
 			bonusDP = dpBonus(bonusDP)
 			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 25, 5, asciiart.imp, asciiart.impattack, "n imp", 15, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
 			print "You now have %sEXP, and now have %s gold!" % (EXP, money)
