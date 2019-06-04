@@ -1,7 +1,7 @@
 # This is a Python Text RPG called PowerText.
 
 ## It was written by Lucca Cioffi at Topsy Studios.
-##Framework for battles was written by Elizabeth Cone.
+## Framework for battles was written by Elizabeth Cone.
 
 > You can use this for any kind of python game so long as you include both authors' names, the name of the game (PowerText), and a link to the Github page for others to use it in the Read Me of your own project. Leave a comment on the Github page if you'd like us to check out the game you make, we would love to see what you've thought of!
 
