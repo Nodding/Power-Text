@@ -13,7 +13,7 @@
 
 
 ### HOW TO PLAY
-| ------ | ------ |
+
 | Command | What it does |
 | ------ | ------ |
 | walk | This is how characters can move to and from locations. There is 1/3rd of a chance to encounter an enemy along the way. |
@@ -24,4 +24,3 @@
 | shop | Some areas have a shop you can access. They will sell items. You will need gold and sometimes a certain level of STR to buy them. |
 | travel | This is how you change where you are walking. If you already visited a location, you can pay to quick travel there. |
 | potion | Uses a potion from your inventory.|
-| ------ | ------ |
