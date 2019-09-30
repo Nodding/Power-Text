@@ -1,7 +1,9 @@
 # This is a Python Text RPG called PowerText.
 
 ## It was written by Lucca Cioffi at Topsy Studios.
-## Framework for battles was written by Elizabeth Cone.
+
+## Framework for battles was written by Elizabeth Cone. She also slapped sense into Lucca to make the game easier to play.
+
 
 > You can use this for any kind of python game so long as you include both authors' names, the name of the game (PowerText), and a link to the Github page for others to use it in the Read Me of your own project. Leave a comment on the Github page if you'd like us to check out the game you make, we would love to see what you've thought of!
 
@@ -11,7 +13,7 @@
 
 
 ### HOW TO PLAY
-
+| ------ | ------ |
 | Command | What it does |
 | ------ | ------ |
 | walk | This is how characters can move to and from locations. There is 1/3rd of a chance to encounter an enemy along the way. |
@@ -22,3 +24,4 @@
 | shop | Some areas have a shop you can access. They will sell items. You will need gold and sometimes a certain level of STR to buy them. |
 | travel | This is how you change where you are walking. If you already visited a location, you can pay to quick travel there. |
 | potion | Uses a potion from your inventory.|
+| ------ | ------ |
