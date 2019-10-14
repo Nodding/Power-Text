@@ -184,9 +184,8 @@ while (gamestart):
 		helpexplain = False
 	action = input("Action> ")
 	if days == 0:
-                currentplace = goal
 		print ("You have arrived at ") + (goal)
-		
+		currentplace = goal
 	if action == "equip":
 		weapon, happystickhave, swordhave, goldpanhave = equip(
 		    weapon, happystickhave, swordhave, goldpanhave)
