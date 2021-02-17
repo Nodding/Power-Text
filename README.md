@@ -1,6 +1,6 @@
 # This is a Python Text RPG called PowerText.
 
-## It was written by Lucca Cioffi at Topsy Studios.
+## It was written by Lucca Cioffi.
 
 ## Framework for battles was written by Elizabeth Cone. She also slapped sense into Lucca to make the game easier to play.
 
