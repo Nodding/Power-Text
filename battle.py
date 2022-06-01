@@ -24,7 +24,7 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
                     print ("And " + str(earnEXP) + " EXP!")
                     EXP = EXP + earnEXP
             else:
-                enemyAttacks()
+                enemyAttacks(enemyAttack, enemyAttackSprite)
         elif user == "p":
                 # check to see if user still has potion uses left
                 if potions > 0:
@@ -53,7 +53,7 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
         sleep(1)
         #enemy's turn!
         if enemyHP > 0:
-            print ("The " + enemyName + " attacks!")
+            print ("A" + enemyName + " attacks!")
             HP = HP - enemyAttacks(enemyAttack, enemyAttackSprite)
         else:
             fighting = False
