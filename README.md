@@ -8,7 +8,7 @@
 > You can use this for any kind of python game so long as you include both authors' names, the name of the game (PowerText), and a link to the Github page for others to use it in the Read Me of your own project. Leave a comment on the Github page if you'd like us to check out the game you make, we would love to see what you've thought of!
 
 ### Ultimate Goal:
-> The ultimate goal of PowerText is to have a functioning RPG system including map navigation, quests, upgrades, combat, and storytelling for future text RPG creators to modify and use. While this will be a standalone RPG, the code is written to the best of the ability to be read easily and modified for others to use in their games.
+> The ultimate goal of PowerText is to have a functioning RPG system including map navigation (done), quests (todo), upgrades (done), combat (done), and storytelling (minimal) for future text RPG creators to modify and use. While this will be a standalone RPG, the code is written to the best of the ability to be read easily and modified for others to use in their games.
 > Own its own, the game will have a unique story, rememberable characters, and should be fun for those playing.
 
 

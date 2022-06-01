@@ -26,9 +26,9 @@ def happyStore(money, happystickhave, swordhave):
 		happystickhave = True
 		money = money - 50
 	elif choice.lower() == "happystick" and happystickhave == False and money < 50:
-                print ("You do not have enough :D")
+		print ("You do not have enough :D")
 	elif choice.lower() == "happystick" and happystickhave == True:
-                print ("You already bought that! Make sure you [equip] it!")
+		print ("You already bought that! Make sure you [equip] it!")
 	elif choice.lower() == "sword" and swordhave == False and money >= 300:
 		print ("You have bought the sword!")
 		swordhave = True

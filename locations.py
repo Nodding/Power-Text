@@ -34,6 +34,7 @@ al4 = ""
 al5 = ""
 
 def availablelocations(curpla, al1, al2, al3, al4, al5):
+	# INFO Shiverton > Magma Magma > Greentree or Vile Greentree > Vile or Magma Vile > Greentree or Terror Terror > Vile
 	if curpla == "Shiverton Village":
 		al1 = "Magma Lane"
 		al2 = "Allerteration Admin Alley"
@@ -52,6 +53,19 @@ def availablelocations(curpla, al1, al2, al3, al4, al5):
 		al3 = "Allerteration Admin Alley"
 		al4 = "Allerteration Admin Alley"
 		al5 = "Allerteration Admin Alley"
+	elif curpla == "Vile Valley":
+		al1 = "Greentree Grove"
+		al2 = "Terror Castle"
+		al3 = "Allerteration Admin Alley"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	elif curpla == "Terror Castle":
+		al1 = "Vile Valley"
+		al2 = "Allerteration Admin Alley"
+		al3 = "Allerteration Admin Alley"
+		al4 = "Allerteration Admin Alley"
+		al5 = "Allerteration Admin Alley"
+	
 	else:
 		al1 = "Allerteration Admin Alley"
 		al2 = "Allerteration Admin Alley"
@@ -75,6 +89,12 @@ def placesdiscover(curpla, k0, k1, k2, k3, k4, k5):
 	if curpla == "Magma Lane" and k2 == False:
 		readx("You arrive in Magma Lane. The blistering heat almost overwhelms you. You power through on your mission to the castle.")
 		k2 = True
+	if curpla == "Vile Vallet" and k3 == False:
+		readx("You step foot in Vile Valley. An overwhelming vile fog clouds a lot of your view.")
+	if curpla == "Greentree Grove" and k4 == False:
+		readx("You make it to Green Grove. Dense jungles surround you.")
+	if curpla == "Terror Castle" and k5 == False:
+		readx("You finally arrive at Terror Castle. Screaming is heard from the top of the tower!")
 	return curpla, k0, k1, k2, k3, k4, k5
 def printLocations(curpla):
 		print (al1, al2, al3, al4, al5)
@@ -88,24 +108,7 @@ def traveltime(curpla):
 	al5 = ""
 
 	print ("Where would you like to go?")
-	if curpla == ("Shiverton Village"):
-		al1 = "Magma Lane"
-		al2 = "Allerteration Admin Alley"
-		al3 = "Allerteration Admin Alley"
-		al4 = "Allerteration Admin Alley"
-		al5 = "Allerteration Admin Alley"
-	elif curpla == ("Magma Lane"):
-		al1 = "Shiverton Village"
-		al2 = "Vile Valley"
-		al3 = "Greentree Grove"
-		al4 = "Allerteration Admin Alley"
-		al5 = "Allerteration Admin Alley"
-	else:
-		al1 = "Allerteration Admin Alley"
-		al2 = "Allerteration Admin Alley"
-		al3 = "Allerteration Admin Alley"
-		al4 = "Allerteration Admin Alley"
-		al5 = "Allerteration Admin Alley"
+	curpla, al1, al2, al3, al4, al5 = availablelocations(curpla, al1, al2, al3, al4, al5)
 	#printLocations(curpla)
 	wanttogo = input("Travel to> ")
 	if wanttogo == al1 or wanttogo == al2 or wanttogo == al3 or wanttogo == al4 or wanttogo == al5:
@@ -113,3 +116,4 @@ def traveltime(curpla):
 		return wanttogo
 	else:
 		print ("That is not in range. Check your [map]!")
+		return "[You have no goal, use [travel] to set it!]"

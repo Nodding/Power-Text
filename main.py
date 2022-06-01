@@ -1,7 +1,7 @@
 import sys
 import random
 from time import sleep
-import easybattle
+import battle
 import asciiart
 import shops
 import upgrade
@@ -14,7 +14,7 @@ HP = 35
 #player damage points
 DP = 10
 bonusDP = 0
-specialuses = 10
+specialuses = 3
 #player strength points and exp points
 STR = 0
 EXP = 0
@@ -117,6 +117,7 @@ def givehelp():
 	print ("You can use [equip] to equip weapons found or bought")
 	print ("You can use [goods] to eat food and look at your inventory")
 	print ("You can use [stats] for you stats.")
+	print ("You can use [upgrade] to increase stats with enough EXP")
 	print ("--------------")
 	print ("Any questions? Use [yes] or [no].")
 	questions = input("> ")
@@ -139,6 +140,8 @@ def givehelp():
 			print ("Map - See the current place you are in, and where you can travel from here.")
 		elif questions1.lower() == "travel":
 			print ("Travel - Allows you to travel to the available areas. You can see what is avaible by checking the [map].")
+		elif questions1.lower() == "upgrade":
+			print ("Upgrade - Pray to the upgrade god. You can then choose [HP] , [STR] or [GOLD] to spend EXP on.")
 		else:
 			print ("Can't help you with that, did you mispell it?")
 	elif questions == "no":
@@ -170,8 +173,8 @@ def showStats(bonusDP):
 	print ("Total gold coins: " + str(money))
 	print ("You have access to the places in "+ str(currentplace) + ", and are currently traveling to " + str(goal))
 #Variables used for the first time the player goes through something
-helpexplain = True
-helpfight = True
+helpexplain = False
+helpfight = False
 gamestart = True
 print ("You are the chosen hero of Teltactica!")
 print ("Travel the world, to ultimately destroy the evil wizard of Terror Castle.")
@@ -184,7 +187,7 @@ while (gamestart):
 		helpexplain = False
 	action = input("Action> ")
 	if days == 0:
-		print ("You have arrived at ") + (goal)
+		print ("You have arrived at " + goal)
 		currentplace = goal
 	if action == "equip":
 		weapon, happystickhave, swordhave, goldpanhave = equip(
@@ -211,7 +214,7 @@ while (gamestart):
 				print ("NOW FIGHT!")
 				helpfight = False
 			bonusDP = dpBonus(bonusDP)
-			fight, enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = easybattle.simplebattle(fight, 25, 5, asciiart.imp, asciiart.impattack, "n imp", 15, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = battle.battle(25, 5, asciiart.imp, asciiart.impattack, "n imp", 15, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
 			print ("You now have "+ str(EXP) + " EXP, and " + str(money) + " gold!")
 	elif action == "shop":
 		print ("A sign at a local shop catches your eye, and you enter.")
@@ -241,6 +244,8 @@ while (gamestart):
 			days = 10
 		elif goal == "Shiverton Village":
 			days = 10
+		elif goal == "Greentree Grove":
+			days == 20
 		print ("It will take " + str(days) + " days to get to your goal.")
 	elif action == "upgrade":
 		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, maxHP, STR, money, ufirst)
