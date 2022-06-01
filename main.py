@@ -171,8 +171,8 @@ def showStats(bonusDP):
 	print ("Total gold coins: " + str(money))
 	print ("You have access to the places in "+ str(currentplace) + ", and are currently traveling to " + str(goal))
 #Variables used for the first time the player goes through something
-helpexplain = False
-helpfight = False
+helpexplain = True
+helpfight = True
 gamestart = True
 print ("You are the chosen hero of Teltactica!")
 print ("Travel the world, to ultimately destroy the evil wizard of Terror Castle.")
