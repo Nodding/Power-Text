@@ -24,12 +24,10 @@ ufirst = True
 money = 10
 goal = "[You have no goal, use [travel] to set it!]"
 days = 10
-#----This is a variable that tells the game if the player is in a fight or not.
-fight = False
 #----This is default enemy HP, DP and name.
 enemyHP = 30
 enemyDP = 10
-enemyname = " "
+enemyname = "Baddie"
 #--money given for killing this enemy
 moneyforkill = 10
 #----This is the special melee attack variables. Its a magic sword that only has a certain amount of uses
