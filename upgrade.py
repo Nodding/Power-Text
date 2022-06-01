@@ -17,7 +17,7 @@ def upgradeGod(EXP, HP, maxHP, STR, money, ufirst):
 	if(ufirst): sleep(0.5)
 	if(ufirst): readx("Upgrade God: Hey there warrior it is me, God. No not that one, the other one. The upgrade one!\n")
 	if(ufirst): sleep(0.5)
-	print ("You have %s points to spend on upgrading yourself, since you have %sEXP!\n") % (((EXP/100)*1), EXP)
+	print ("You have " + str((EXP/100)*1) + " points to spend on upgrading yourself, since you have " + EXP + " EXP!\n")
 	if(ufirst): sleep(3)
 	if(ufirst): readx("UG: So, what do you want me to enhance? If you forgot, just pray the words [help] back.\n")
 	ufirst = False
@@ -33,8 +33,8 @@ def upgradeGod(EXP, HP, maxHP, STR, money, ufirst):
 			maxHP = maxHP + 5
 			HP = maxHP
 			EXP = EXP - 100
-			print ("You now have a maxium of %sHP!") % (maxHP)
-			readx("UG: Hooray!")
+			print ("You now have a maxium of " + maxHP +  "HP!")
+			readx("UG: Good for you!")
 		else:
 			print ("UG: You don't have enough EXP!")
 	elif (prayer == "STR"):
@@ -42,7 +42,7 @@ def upgradeGod(EXP, HP, maxHP, STR, money, ufirst):
 			readx("UG: [STR]! I'll add more muscle tissue to your body!")
 			STR = STR + 1
 			EXP = EXP - 100
-			print ("You now have %sSTR!") % (STR)
+			print ("You now have " + str(STR) + " STR!")
 			readx("UG: Hooray!")
 		else:
 			print ("UG: You don't have enough EXP!")
@@ -52,7 +52,7 @@ def upgradeGod(EXP, HP, maxHP, STR, money, ufirst):
 			sleep(1)
 			money += EXP*1
 			EXP = 0
-			print ("Cha-ching! You have %s gold!") % (money)
+			print ("Cha-ching! You have " + str(money) + " gold!")
 			sleep(1)
 			readx("UG: Look at you Mr.Money-Bags!")
 		else:
