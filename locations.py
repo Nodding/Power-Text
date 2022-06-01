@@ -79,9 +79,14 @@ def printmap(curpla):
 		print (asciiart.map1)
 	elif curpla == "Magma Lane":
 		print (asciiart.map2)
-	else:
+	elif curpla == "Vile Valley":
+		print (asciiart.map3)
+	elif curpla == "Allerteration Admin Alley":
 		print (asciiart.mapCommands)
+	else:
+		print (asciiart.blankmap)
 
+# Allows player to discover places
 def placesdiscover(curpla, k0, k1, k2, k3, k4, k5):
 	if curpla == "Shiverton Village" and k1 == False:
 		readx("You awake in Shiverton Village. Its cold climate sends shivers down your spine, but you shake it off, knowing you must push through here to get to the castle.")
@@ -90,15 +95,23 @@ def placesdiscover(curpla, k0, k1, k2, k3, k4, k5):
 		readx("You arrive in Magma Lane. The blistering heat almost overwhelms you. You power through on your mission to the castle.")
 		k2 = True
 	if curpla == "Vile Vallet" and k3 == False:
-		readx("You step foot in Vile Valley. An overwhelming vile fog clouds a lot of your view.")
+		readx("You step foot in Vile Valley. As overwhelming vile fog clouds a lot of your view, you can barely make out the way to the castle.")
+		k3 = True
 	if curpla == "Greentree Grove" and k4 == False:
-		readx("You make it to Green Grove. Dense jungles surround you.")
+		readx("You make it to Green Grove. Dense jungles surround you, but you don't let that get in the way of your mission to the castle.")
+		k4 = True
 	if curpla == "Terror Castle" and k5 == False:
-		readx("You finally arrive at Terror Castle. Screaming is heard from the top of the tower!")
+		readx("You finally arrive at Terror Castle. Screaming is heard from the top of the tower! RUN!")
+		sleep(2)
+		readx("Or in this case, [walk].")
+		k5 = True
 	return curpla, k0, k1, k2, k3, k4, k5
+
 def printLocations(curpla):
 		print (al1, al2, al3, al4, al5)
 		print (curpla)
+
+# Allows player to travel to new locations, and figures out where they can walk to.
 def traveltime(curpla):
 	#initating variables
 	al1 = ""

@@ -220,6 +220,10 @@ while (gamestart):
 			print (asciiart.happyshop)
 			sleep(1)
 			money, happystickhave, swordhave = shops.happyStore(money, happystickhave, swordhave)
+		elif currentplace == "Magma Lane":
+			#TODO hot hot goods art
+			sleep(1)
+			money,swordhave,goldpanhave = shops.HotHotGoods(money,swordhave,goldpanhave)
 		else:
 			print ("Wha..? If you see this yell at Lucca.")
 	elif action == "potion":
