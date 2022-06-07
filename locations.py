@@ -128,5 +128,5 @@ def traveltime(curpla):
 		print ("You turn towards your new goal.")
 		return wanttogo
 	else:
-		print ("That is not in range. Check your [map]!")
+		print ("That is not in range or not spelled correctly. Check your [map]!")
 		return "[You have no goal, use [travel] to set it!]"
