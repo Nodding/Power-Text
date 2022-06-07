@@ -63,10 +63,13 @@ weapon = "hand"
 #All ascii graphics used to be here but are now stored in the ascii art file
 
 #Enemy stats defined here, but can be changed based on battle you want.
-enemyHP = 10
-enemyattack = 2
-enemysprite = " "
-enemyattacksprite = " "
+enemyHP = 9999999999999
+enemyattack = 9999999999999
+enemysprite = "DEBUG ENEMY! COMPLAIN TO LUCCA"
+enemyattacksprite = "DEBUG ENEMY ATTACK! COMPLAIN TO LUCCA"
+enemyname = " broken debug enemy"
+moneyforkill = 9999999999999
+earnEXP = 9999999999999
 
 
 #How to use readx(x). Have it read out the text by placing a string in the ().
@@ -178,12 +181,16 @@ def what_enemy(enemy):
 		enemyattacksprite = asciiart.impattack
 		enemyname = "n imp"
 		moneyforkill = random.randrange(10, 30, 5)
-		earnXP = 20
-		
-#Variables used for the first time the player goes through something
-helpexplain = True
-helpfight = True
+		earnEXP = 20
+	return enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP
+
+
+#STARTS GAME
 gamestart = True
+
+#Variables used for the first time the player goes through something
+helpexplain = False
+helpfight = False
 magmafirst = True
 ufirst = True
 
@@ -236,8 +243,8 @@ while (gamestart):
 				print ("NOW FIGHT!")
 				helpfight = False
 			bonusDP = dpBonus(bonusDP)
-			what_enemy("road_imp")
-			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnXP = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnXP)
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("road_imp")
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP)
 			print ("You now have "+ str(EXP) + " EXP, and " + str(money) + " gold!")
 	elif action == "shop":
 		print ("A sign at a local shop catches your eye, and you enter.")
