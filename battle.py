@@ -54,7 +54,10 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
         #enemy's turn!
         if enemyHP > 0:
             print ("A" + enemyName + " attacks!")
-            HP = HP - enemyAttacks(enemyAttack, enemyAttackSprite)
+            dealt_damage = enemyAttacks(enemyAttack, enemyAttackSprite)
+            HP = HP - dealt_damage
+            print ("You took " + str(dealt_damage) + " points of damage!")
+            print ("You have " + str(HP) + " left!")
         else:
             fighting = False
     print ("You won!")
