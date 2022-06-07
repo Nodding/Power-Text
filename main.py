@@ -169,6 +169,17 @@ def showStats(bonusDP):
 	print ("STR points: " + str(STR))
 	print ("Total gold coins: " + str(money))
 	print ("You have access to the places in "+ str(currentplace) + ", and are currently traveling to " + str(goal))
+
+def what_enemy(enemy):
+	if enemy == "road_imp":
+		enemyHP = 40
+		enemyattack = 5
+		enemysprite = asciiart.imp
+		enemyattacksprite = asciiart.impattack
+		enemyname = "n imp"
+		moneyforkill = random.randrange(10, 30, 5)
+		earnXP = 20
+		
 #Variables used for the first time the player goes through something
 helpexplain = True
 helpfight = True
@@ -225,7 +236,8 @@ while (gamestart):
 				print ("NOW FIGHT!")
 				helpfight = False
 			bonusDP = dpBonus(bonusDP)
-			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = battle.battle(25, 5, asciiart.imp, asciiart.impattack, "n imp", 15, HP, maxHP, DP, bonusDP, specialuses, money, potions, EXP, 20)
+			what_enemy("road_imp")
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnXP = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnXP)
 			print ("You now have "+ str(EXP) + " EXP, and " + str(money) + " gold!")
 	elif action == "shop":
 		print ("A sign at a local shop catches your eye, and you enter.")
