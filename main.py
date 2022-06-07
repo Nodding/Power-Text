@@ -18,8 +18,7 @@ specialuses = 3
 #player strength points and exp points
 STR = 0
 EXP = 0
-#sets flag for upgrade god introdialogue
-ufirst = True
+
 #player money, to buy potions and new weapons
 money = 10
 goal = "[You have no goal, use [travel] to set it!]"
@@ -174,6 +173,9 @@ def showStats(bonusDP):
 helpexplain = True
 helpfight = True
 gamestart = True
+magmafirst = True
+ufirst = True
+
 print ("You are the chosen hero of Teltactica!")
 print ("Travel the world, to ultimately destroy the evil wizard of Terror Castle.")
 while (gamestart):
@@ -187,6 +189,17 @@ while (gamestart):
 	if days == 0:
 		print ("You have arrived at " + goal)
 		currentplace = goal
+		if goal == "Magma Lane" and magmafirst == True:
+			readx ("HALT! IT IS I!\n")
+			sleep(1)
+			readx ("FIREY FRANCESO! DEFENDER OF THE ENTRANCE TO MAGMA LANE!\n")
+			sleep(1)
+			readx ("NOW WE SHALL... DO BATTLE! YES! THAT IS WHAT WE SHALL DO!\n")
+			sleep(1)
+			#TODO battle with firey franceso before entering magma lane for the first time
+			readx("You have bested me... I shall begrudgeingly grant thee access to Magma Lane.\n")
+			readx("Maybe you can help the townspeople with their issues in the temple... you can only go there if you are worthy.\n")
+			magmafirst = False
 	if action == "equip":
 		weapon, happystickhave, swordhave, goldpanhave = equip(
 		    weapon, happystickhave, swordhave, goldpanhave)
@@ -246,9 +259,10 @@ while (gamestart):
 			days = 10
 		elif goal == "Shiverton Village":
 			days = 10
-		elif goal == "Greentree Grove":
+		elif goal == "Vile Valley":
 			days == 20
-		print ("It will take " + str(days) + " days to get to your goal.")
+		if goal != "[You have no goal, use [travel] to set it!]":
+			print ("It will take " + str(days) + " days to get to your goal.")
 	elif action == "upgrade":
 		EXP, HP, maxHP, STR, money, ufirst = upgrade.upgradeGod(EXP, HP, maxHP, STR, money, ufirst)
 	else:
