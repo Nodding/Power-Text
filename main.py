@@ -263,11 +263,11 @@ while (gamestart):
 		if currentplace == "Shiverton Village":
 			print (asciiart.happyshop)
 			sleep(1)
-			money, happystickhave, swordhave = shops.happyStore(money, happystickhave, swordhave)
+			money, happystickhave, swordhave, potions = shops.happyStore(money, happystickhave, swordhave, potions)
 		elif currentplace == "Magma Lane":
 			#TODO hot hot goods art
 			sleep(1)
-			money,swordhave,goldpanhave = shops.HotHotGoods(money,swordhave,goldpanhave)
+			money,swordhave,goldpanhave,potions = shops.HotHotGoods(money,swordhave,goldpanhave,potions)
 		else:
 			print ("Wha..? If you see this yell at Lucca.")
 	elif action == "potion":
@@ -276,6 +276,7 @@ while (gamestart):
 			print ("Uncorking the top, you take a swig from a potion")
 			HP = maxHP
 			potions = potions - 1
+			print(asciiart.potion)
 			print ("You have " + str(HP) + " HP!")
 		else:
 			print ("You reach for the potion section in your bag to find none are there :c.")

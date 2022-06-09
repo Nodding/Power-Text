@@ -10,14 +10,15 @@ def readx(x):
 	print ("") #newline it looks nicer
 
 #defines the actual stores
-def happyStore(money, happystickhave, swordhave):
+def happyStore(money, happystickhave, swordhave, potions):
 	print ("WELCOME TO THE HAPPY STORE :D\n")
 	#anything in readx is printed like a type writer
 	readx("Mr.Happy: Welcome to the happy store :D")
 	readx("Mr.H: We have many goods :D")
 	sleep(0.2)
-	print ("[happystick]: 50 Gold")
-	print ("[sword]: 300 Gold")
+	print("Restore max [potions]: 50 Gold")
+	print("[happystick]: 50 Gold")
+	print("[sword]: 300 Gold")
 	sleep(1)
 	readx("What would you like? c:")
 	choice = input("I want to buy...> ")
@@ -37,19 +38,26 @@ def happyStore(money, happystickhave, swordhave):
 		print ("You do not have enough! :D")
 	elif choice.lower() == "sword" and swordhave == True:
 		print ("You already have the sword! Go [equip] it if you haven't!")
+	elif choice.lower() == "potions" and money >= 50:
+		print ("Ok, you now have 5 potions! C:")
+		money = money - 50
+		potions = 5
+	elif choice.lower() == "potions" and money < 50:
+		print ("Hey you don't have enough money, honey!")
 	else:
 		print ("I didn't understand that :C")
-	return money, happystickhave, swordhave
+	return money, happystickhave, swordhave, potions
 
 	#INFO can buy golden pan here but it is not obvious
-def HotHotGoods(money, swordhave, goldenpanhave):
+def HotHotGoods(money, swordhave, goldenpanhave, potions):
 	print("WELCOME TO HOT HOT GOODS")
 	sleep(1)
 	readx("OH GOD ARE THESE DEALS SO HOT!")
 	sleep(0.5)
 	print("\033[1;31mTAKE ADVANTAGE OF THEM BEFORE THEY ALL BURN UP!\033[1;m")
 	sleep(0.5)
-	print ("[sword]: 300 Gold")
+	print("Restore max [potions]: 50 Gold")
+	print("[sword]: 300 Gold")
 	sleep(1)
 	choice = input("I want to buy...> ")
 	if choice.lower() == "sword" and swordhave == False and money >= 300:
@@ -68,4 +76,10 @@ def HotHotGoods(money, swordhave, goldenpanhave):
 		print ("What? Goldenpan? Nope never heard of one of those...")
 	elif choice.lower() == "goldenpan" and goldenpanhave == True:
 		print ("You already have the GoldenPan don't rub  it in...")
-	return money,swordhave,goldenpanhave
+	elif choice.lower() == "potions" and money >= 50:
+		print ("Ok, you now have 5 potions!")
+		money = money - 50
+		potions = 5
+	elif choice.lower() == "potions" and money < 50:
+		print ("Hey you don't have enough money!")
+	return money,swordhave,goldenpanhave,potions
