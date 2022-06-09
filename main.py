@@ -156,7 +156,7 @@ def dpBonus(bonusDP):
 	elif (weapon == "sword"):
 		bonusDP = 25
 	elif (weapon == "goldenpan"):
-		bonusDP = 50
+		bonusDP = 500
 	else:
 		bonusDP = 0
 	return bonusDP
@@ -182,6 +182,14 @@ def what_enemy(enemy):
 		enemyname = "n imp"
 		moneyforkill = random.randrange(10, 30, 5)
 		earnEXP = 20
+	elif enemy == "firey_fran":
+		enemyHP = 100
+		enemyattack = 10
+		enemysprite = asciiart.goblin
+		enemyattacksprite = asciiart.goblinattack
+		enemyname = " FIREY FRANCESO"
+		moneyforkill = 200
+		earnEXP = 200
 	return enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP
 
 
@@ -214,9 +222,13 @@ while (gamestart):
 			sleep(1)
 			readx ("NOW WE SHALL... DO BATTLE! YES! THAT IS WHAT WE SHALL DO!\n")
 			sleep(1)
-			#TODO battle with firey franceso before entering magma lane for the first time
+			bonusDP = dpBonus(bonusDP)
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("road_imp")
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP)
 			readx("You have bested me... I shall begrudgeingly grant thee access to Magma Lane.\n")
+			sleep(1)
 			readx("Maybe you can help the townspeople with their issues in the temple... you can only go there if you are worthy.\n")
+			sleep(1)
 			magmafirst = False
 	if action == "equip":
 		weapon, happystickhave, swordhave, goldpanhave = equip(

@@ -44,6 +44,7 @@ def happyStore(money, happystickhave, swordhave):
 	#INFO can buy golden pan here but it is not obvious
 def HotHotGoods(money, swordhave, goldenpanhave):
 	print("WELCOME TO HOT HOT GOODS")
+	sleep(1)
 	readx("OH GOD ARE THESE DEALS SO HOT!")
 	sleep(0.5)
 	print("\033[1;31mTAKE ADVANTAGE OF THEM BEFORE THEY ALL BURN UP!\033[1;m")
