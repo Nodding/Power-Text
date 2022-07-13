@@ -1,8 +1,7 @@
 import asciiart
 from time import sleep
 import random
-
-won_battle = True
+import sys
 
 #How to use readx(x). Have it read out the text by placing a string in the ().
 def readx(x):
@@ -15,6 +14,7 @@ def readx(x):
 
 def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP):
     fighting = True
+    won_battle = True
     print (enemySprite)
     print ("A" + enemyName + " attacks with " + str(enemyHP) + " HP and " + str(enemyAttack) + " attack power!")
     while (fighting):
@@ -29,10 +29,10 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
             print ("It has " + str(enemyHP) + " HP left!")
             if enemyHP <= 0:
                     fighting = False
-                    print ("You won!")
+                    # print ("You won!")
                     money = money + moneyforkill
-                    print ("You have earned " + str(moneyforkill) + " gold pieces!")
-                    print ("And " + str(earnEXP) + " EXP!")
+                    # print ("You have earned " + str(moneyforkill) + " gold pieces!")
+                    # print ("And " + str(earnEXP) + " EXP!")
                     EXP = EXP + earnEXP
         elif user == "p":
                 # check to see if user still has potion uses left
@@ -66,7 +66,7 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
             print ("A" + enemyName + " attacks!")
             dealt_damage = enemyAttacks(enemyAttack, enemyAttackSprite)
             HP = HP - dealt_damage
-            if HP >= 0:
+            if HP <= 0:
                 fighting = False
                 won_battle = False
             print ("You took " + str(dealt_damage) + " points of damage!")
@@ -85,7 +85,7 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
         specialuses = 0
         money = money - moneyforkill
         print("You broke all remaining potions. You have none now.")
-        print("The enemy mugged you for " + moneyforkill + " coins.")
+        print("The enemy mugged you for " + str(moneyforkill) + " coins.")
         print("With barely any breath left, you no long have any special attacks.")
     return enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP
     
