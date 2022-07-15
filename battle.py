@@ -70,7 +70,7 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
                 fighting = False
                 won_battle = False
             print ("You took " + str(dealt_damage) + " points of damage!")
-            print ("You have " + str(HP) + " left!")
+            print ("You have " + str(HP) + " HP left!")
         else:
             fighting = False
     if won_battle:

@@ -223,7 +223,7 @@ while (gamestart):
 			readx ("NOW WE SHALL... DO BATTLE! YES! THAT IS WHAT WE SHALL DO!\n")
 			sleep(1)
 			bonusDP = dpBonus(bonusDP)
-			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("road_imp")
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("firey_fran")
 			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP)
 			readx("You have bested me... I shall begrudgeingly grant thee access to Magma Lane.\n")
 			sleep(1)
@@ -240,6 +240,7 @@ while (gamestart):
 	elif action == "walk":
 		print ("You walk towards your current goal " + goal)
 		days = days - 1
+		print ("You have " + str(days) + " days left!")
 		roll = 1
 		roll = random.randrange(1, 3)
 		if roll == 2:
@@ -292,7 +293,7 @@ while (gamestart):
 		elif goal == "Shiverton Village":
 			days = 10
 		elif goal == "Vile Valley":
-			days == 20
+			days = 20
 		if goal != "[You have no goal, use [travel] to set it!]":
 			print ("It will take " + str(days) + " days to get to your goal.")
 	elif action == "upgrade":
