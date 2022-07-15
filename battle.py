@@ -12,7 +12,7 @@ def readx(x):
 	print ("") #newline it looks nicer
 
 
-def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP):
+def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle):
     fighting = True
     won_battle = True
     print (enemySprite)
@@ -84,10 +84,13 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
         potions = 0
         specialuses = 0
         money = money - moneyforkill
+        if money >= 0:
+            money = 0
+        HP = MaxHP
         print("You broke all remaining potions. You have none now.")
         print("The enemy mugged you for " + str(moneyforkill) + " coins.")
-        print("With barely any breath left, you no long have any special attacks.")
-    return enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP
+        print("With barely any breath left, you no longer have any special attacks.")
+    return enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, moneyforkill, HP, MaxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle
     
 
 def enemyAttacks(enemyAttack, enemyAttackSprite):

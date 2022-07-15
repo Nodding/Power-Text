@@ -172,6 +172,7 @@ def showStats(bonusDP):
 	print ("STR points: " + str(STR))
 	print ("Total gold coins: " + str(money))
 	print ("You have access to the places in "+ str(currentplace) + ", and are currently traveling to " + str(goal))
+	print ("You are " + str(days) + " days from your goal!")
 
 def what_enemy(enemy):
 	if enemy == "road_imp":
@@ -192,6 +193,7 @@ def what_enemy(enemy):
 		earnEXP = 200
 	return enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP
 
+won_battle = False
 
 #STARTS GAME
 gamestart = True
@@ -200,6 +202,7 @@ gamestart = True
 helpexplain = True
 helpfight = True
 magmafirst = True
+vilefirst = True
 ufirst = True
 
 print ("You are the chosen hero of Teltactica!")
@@ -214,7 +217,6 @@ while (gamestart):
 	action = input("Action> ")
 	if days == 0:
 		print ("You have arrived at " + goal)
-		currentplace = goal
 		if goal == "Magma Lane" and magmafirst == True:
 			readx ("HALT! IT IS I!\n")
 			sleep(1)
@@ -224,12 +226,22 @@ while (gamestart):
 			sleep(1)
 			bonusDP = dpBonus(bonusDP)
 			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("firey_fran")
-			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP)
-			readx("You have bested me... I shall begrudgeingly grant thee access to Magma Lane.\n")
-			sleep(1)
-			readx("Maybe you can help the townspeople with their issues in the temple... you can only go there if you are worthy.\n")
-			sleep(1)
-			magmafirst = False
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle)
+			if won_battle: 
+				readx("You have bested me... I shall begrudgeingly grant thee access to Magma Lane.\n")
+				sleep(1)
+				readx("Maybe you can help the townspeople with their issues in the temple... you can only go there if you are worthy.\n")
+				sleep(1)
+				currentplace = goal
+				magmafirst = False
+			else:
+				readx("Because of your defeat, you were sent back 2 days of travel!")
+				days = 2
+		
+		if goal == "Vile Valley" and vilefirst == True:
+			print("FOUND VILE VALLEY! GOD IT STICKS!")
+			vilefirst = False
+
 	if action == "equip":
 		weapon, happystickhave, swordhave, goldpanhave = equip(
 		    weapon, happystickhave, swordhave, goldpanhave)
@@ -257,7 +269,7 @@ while (gamestart):
 				helpfight = False
 			bonusDP = dpBonus(bonusDP)
 			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("road_imp")
-			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP)
+			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle)
 			print ("You now have "+ str(EXP) + " EXP, and " + str(money) + " gold!")
 	elif action == "shop":
 		print ("A sign at a local shop catches your eye, and you enter.")
