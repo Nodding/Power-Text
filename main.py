@@ -197,8 +197,8 @@ def what_enemy(enemy):
 gamestart = True
 
 #Variables used for the first time the player goes through something
-helpexplain = False
-helpfight = False
+helpexplain = True
+helpfight = True
 magmafirst = True
 ufirst = True
 
