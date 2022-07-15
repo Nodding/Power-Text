@@ -94,7 +94,7 @@ def placesdiscover(curpla, k0, k1, k2, k3, k4, k5):
 	if curpla == "Magma Lane" and k2 == False:
 		readx("You arrive in Magma Lane. The blistering heat almost overwhelms you. You power through on your mission to the castle.")
 		k2 = True
-	if curpla == "Vile Vallet" and k3 == False:
+	if curpla == "Vile Valley" and k3 == False:
 		readx("You step foot in Vile Valley. As overwhelming vile fog clouds a lot of your view, you can barely make out the way to the castle.")
 		k3 = True
 	if curpla == "Greentree Grove" and k4 == False:

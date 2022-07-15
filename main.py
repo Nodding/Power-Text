@@ -150,24 +150,24 @@ def givehelp():
 		print ("You were supposed to use [yes] or [no]!")
 
 
-def dpBonus(bonusDP):
+def dpBonus(bonusDP, STR):
 	if (weapon == "happystick"):
 		bonusDP = 5
-	elif (weapon == "sword"):
+	if (weapon == "sword"):
 		bonusDP = 25
-	elif (weapon == "goldenpan"):
+	if (weapon == "goldenpan"):
 		bonusDP = 500
-	else:
-		bonusDP = 0
+	bonusDP = bonusDP + (STR * 5)
+
 	return bonusDP
-def showStats(bonusDP):
+def showStats(bonusDP, STR):
 	print ("Pulling out a mirror, you assess yourself.")
 	print ("--STATS--")
 	print ("Your total EXP points: " + str(EXP))
 	print ("HP as of now: " + str(HP))
 	print ("Max HP: " + str(maxHP))
 	print ("DP w/o weapon bonus: " + str(DP))
-	bonusDP = dpBonus(bonusDP)
+	bonusDP = dpBonus(bonusDP, STR)
 	print ("DP w/ weapon bonus: " + str(DP + bonusDP))
 	print ("STR points: " + str(STR))
 	print ("Total gold coins: " + str(money))
@@ -214,7 +214,6 @@ while (gamestart):
 		sleep(1)
 		print ("Use the [help] command to learn commands.")
 		helpexplain = False
-	action = input("Action> ")
 	if days == 0:
 		print ("You have arrived at " + goal)
 		if goal == "Magma Lane" and magmafirst == True:
@@ -224,7 +223,7 @@ while (gamestart):
 			sleep(1)
 			readx ("NOW WE SHALL... DO BATTLE! YES! THAT IS WHAT WE SHALL DO!\n")
 			sleep(1)
-			bonusDP = dpBonus(bonusDP)
+			bonusDP = dpBonus(bonusDP, STR)
 			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("firey_fran")
 			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle)
 			if won_battle: 
@@ -239,16 +238,16 @@ while (gamestart):
 				days = 2
 		
 		if goal == "Vile Valley" and vilefirst == True:
-			print("FOUND VILE VALLEY! GOD IT STICKS!")
+			currentplace = goal
 			vilefirst = False
-
+	action = input("Action> ")
 	if action == "equip":
 		weapon, happystickhave, swordhave, goldpanhave = equip(
 		    weapon, happystickhave, swordhave, goldpanhave)
 	elif action == "help":
 		givehelp()
 	elif action == "stats":
-		showStats(bonusDP)
+		showStats(bonusDP, STR)
 	elif action == "walk":
 		print ("You walk towards your current goal " + goal)
 		print ("You have " + str(days) + " days left!")
@@ -267,7 +266,7 @@ while (gamestart):
 				sleep(4)
 				print ("NOW FIGHT!")
 				helpfight = False
-			bonusDP = dpBonus(bonusDP)
+			bonusDP = dpBonus(bonusDP, STR)
 			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, earnEXP = what_enemy("road_imp")
 			enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle = battle.battle(enemyHP, enemyattack, enemysprite, enemyattacksprite, enemyname, moneyforkill, HP,maxHP, DP, bonusDP, specialuses, money, potions, EXP, earnEXP, won_battle)
 			print ("You now have "+ str(EXP) + " EXP, and " + str(money) + " gold!")

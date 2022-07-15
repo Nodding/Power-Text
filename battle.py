@@ -26,6 +26,7 @@ def battle(enemyHP, enemyAttack, enemySprite, enemyAttackSprite, enemyName, mone
             enemyHP = enemyHP - (DP+bonusDP)
             print (asciiart.personattack)
             sleep(1)
+            print ("You dealt " + str(DP+bonusDP) + " damage!")
             print ("It has " + str(enemyHP) + " HP left!")
             if enemyHP <= 0:
                     fighting = False
