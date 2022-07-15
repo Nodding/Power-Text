@@ -239,8 +239,8 @@ while (gamestart):
 		showStats(bonusDP)
 	elif action == "walk":
 		print ("You walk towards your current goal " + goal)
-		days = days - 1
 		print ("You have " + str(days) + " days left!")
+		days = days - 1
 		roll = 1
 		roll = random.randrange(1, 3)
 		if roll == 2:
